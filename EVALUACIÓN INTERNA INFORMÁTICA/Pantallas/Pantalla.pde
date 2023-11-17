@@ -10,18 +10,19 @@ void setup() {
 
 void draw() {
 
-  background(255);    // Color del fondo
+  background(0);    // Color del fondo
 
   if (numPantalla==1) {
-    dibuixaRepertori1();
+    dibuixaIntro1();
   } else if (numPantalla == 2) {
-    dibuixaPantalla02();
+    
+    dibuixaRepertori1();
   } else if (numPantalla == 3) {
-    dibuixaPantalla03();
+   dibuixaPantalla02();
   } else if (numPantalla == 4) {
-    dibuixaPantalla04();
+    dibuixaPantalla03();
   } else if (numPantalla == 5) {
-    dibuixaPantalla05();
+    dibuixaPantalla04();
   }
 
 

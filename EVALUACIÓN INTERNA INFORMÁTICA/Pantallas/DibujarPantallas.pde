@@ -1,5 +1,9 @@
 // Funcions de Dibuix de les Pantalles
 
+void dibuixaIntro1(){
+  dibujarLogo();
+  dibuixaCercleIntro();
+}
 
 void dibuixaRepertori1(){
 
@@ -31,9 +35,13 @@ void dibuixaPantalla03(){
 }
 
 void dibuixaPantalla04(){
-  
+  dibujarLogo();
+  dibujarMenu();
+  dibujarTitulo();
 }
 
 void dibuixaPantalla05(){
-  
+  dibujarLogo();
+  dibujarMenu();
+  dibujarTitulo();
 }
