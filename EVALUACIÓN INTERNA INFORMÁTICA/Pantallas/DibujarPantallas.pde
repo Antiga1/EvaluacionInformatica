@@ -3,6 +3,8 @@
 void dibuixaIntro1(){
   dibujarLogo();
   dibuixaCercleIntro();
+  dibujarMenu();
+   enableButtons();
 }
 
 void dibuixaRepertori1(){
@@ -12,36 +14,39 @@ void dibuixaRepertori1(){
   dibujarTitulo();
   dibuixaColumna1();
   dibuixaColumna2();
-  
+  enableButtons();
 
 
 }
 
-void dibuixaPantalla02(){
+void dibuixaRepertori2(){
    dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
   
    Tablero();
   dibuixaColumna3();
-  
+  enableButtons();
 }
 
-void dibuixaPantalla03(){
+void dibuixaCalendario(){
    dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
   DibujaCalendario();
+  enableButtons();
 }
 
 void dibuixaPantalla04(){
   dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
+  enableButtons();
 }
 
 void dibuixaPantalla05(){
   dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
+  enableButtons();
 }

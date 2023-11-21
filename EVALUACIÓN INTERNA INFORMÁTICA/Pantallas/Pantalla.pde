@@ -1,46 +1,75 @@
-int numPantalla = 1;  // Número de la Pantalla Actual
+enum PANTALLA {INTRO, REPERTORIO1, CALENDARIO, REGISTROHORAS, MISCLASES, CONFIG};
+PANTALLA pantalla = PANTALLA.INTRO;
+
+
 
 void setup() {
   fullScreen();            // Pantalla completa
-
   noStroke();              // Sense bordes
-  textAlign(CENTER);       // Alineació del text
-  textSize(18);            // Mida del text
+  
+  loadMedia();
+  loadFonts();// Càrrega dels elements multimèdia
+  setGUI();      // Estableix els paràmetres de la GUI
 }
 
 void draw() {
 
-  background(0);    // Color del fondo
+  background(50);    // Color del fondo
+  
+   switch(pantalla){
+    case INTRO: dibuixaIntro1(); break;
+    case REPERTORIO1: dibuixaRepertori1(); break;
+    case CALENDARIO: dibuixaCalendario(); break;
+    case MISCLASES: dibuixaPantalla04(); break;
+    case CONFIG: dibuixaPantalla04(); break;
+    case REGISTROHORAS: dibuixaPantalla04(); break;
+  } 
+  
+  String infoPantalla = pantalla.ordinal()+" ) "+pantalla.name();
+  text(infoPantalla, width/2, height/2);  // Número i nom de la Pantalla
+  
+  updateCursor();   // Modifica l'aparença del cursor
+  
+}
 
-  if (numPantalla==1) {
-    dibuixaIntro1();
-  } else if (numPantalla == 2) {
-    
-    dibuixaRepertori1();
-  } else if (numPantalla == 3) {
-   dibuixaPantalla02();
-  } else if (numPantalla == 4) {
-    dibuixaPantalla03();
-  } else if (numPantalla == 5) {
-    dibuixaPantalla04();
+void mousePressed(){
+  
+  if(bRepertori1.mouseOverButton() && bRepertori1.enabled){
+    pantalla = PANTALLA.REPERTORIO1;
+   
   }
-
-
-  pushStyle();
-  fill(0);
-  textSize(36);
-  textAlign(RIGHT);
-  text("PANTALLA "+numPantalla, width-50, 60);
-  text("X: "+mouseX+", Y:"+mouseY, width-50, 100);
-  popStyle();
+  else if(bCalendario.mouseOverButton() && bCalendario.enabled){
+    println("Pantalla Punts");
+    pantalla = PANTALLA.CALENDARIO;
+    
+  }
+  else if(bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled){
+    pantalla = PANTALLA.MISCLASES;
+   
+  }
+  else if(bMisClases.mouseOverButton() && bMisClases.enabled){
+    pantalla = PANTALLA.CONFIG;
+    
+  }
+  else if(bPreparación.mouseOverButton() && bPreparación.enabled){
+    pantalla = PANTALLA.REGISTROHORAS;
+  
+  }
 }
 
 
-void keyPressed() {
-  if (keyCode==RIGHT) {
-    numPantalla++;
-  } else if (keyCode==LEFT) {
-    numPantalla--;
+// Modifica el cursor
+void updateCursor(){
+  
+  if((bRepertori1.mouseOverButton() && bRepertori1.enabled)||
+     (bCalendario.mouseOverButton() && bCalendario.enabled)||
+     (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled)||
+     (bMisClases.mouseOverButton() && bMisClases.enabled)||
+     (bPreparación.mouseOverButton() && bPreparación.enabled)){
+      cursor(HAND);
   }
-  numPantalla = constrain(numPantalla,1,5);
+  else {
+     cursor(ARROW);
+  }
+  
 }
