@@ -5,13 +5,13 @@ void dibujarLogo() {
   fill(255);
   text("LOGOTIPO", marginH + logoWidth/2, marginV + logoHeight/2);
   popStyle();
-   image(imgLogo, marginH, 0, logoWidth, logoHeight);
+   image(imgLogo, 0, 0, logoWidth+ marginH,2*marginV+ logoHeight);
 }
 
 void dibujarMenu() {
   pushStyle();
   fill(0);
-  rect(marginH, 2*marginV + logoHeight, sidebarWidth, sidebarHeight);
+  rect(0, 2*marginV + logoHeight, sidebarWidth+marginH, sidebarHeight+17);
   fill(255);
   text("MENU", marginH + sidebarWidth/2, marginV + logoHeight + sidebarHeight/2);
   popStyle();
