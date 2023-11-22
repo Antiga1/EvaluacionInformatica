@@ -1,4 +1,4 @@
-enum PANTALLA {INTRO, REPERTORIO1, CALENDARIO, REGISTROHORAS, MISCLASES, CONFIG};
+enum PANTALLA {INTRO, REPERTORIO1, CALENDARIO, REGISTROHORAS, MISCLASES, PREPARACION};
 PANTALLA pantalla = PANTALLA.INTRO;
 
 
@@ -21,7 +21,7 @@ void draw() {
     case REPERTORIO1: dibuixaRepertori1(); break;
     case CALENDARIO: dibuixaCalendario(); break;
     case MISCLASES: dibuixaPantalla04(); break;
-    case CONFIG: dibuixaPantalla04(); break;
+    case PREPARACION: dibuixaPantalla04(); break;
     case REGISTROHORAS: dibuixaPantalla04(); break;
   } 
   
@@ -44,15 +44,15 @@ void mousePressed(){
     
   }
   else if(bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled){
-    pantalla = PANTALLA.MISCLASES;
+    pantalla = PANTALLA.REGISTROHORAS;
    
   }
   else if(bMisClases.mouseOverButton() && bMisClases.enabled){
-    pantalla = PANTALLA.CONFIG;
+    pantalla = PANTALLA.MISCLASES;
     
   }
   else if(bPreparación.mouseOverButton() && bPreparación.enabled){
-    pantalla = PANTALLA.REGISTROHORAS;
+    pantalla = PANTALLA.PREPARACION;
   
   }
 }
