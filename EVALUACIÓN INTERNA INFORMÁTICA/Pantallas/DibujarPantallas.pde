@@ -3,7 +3,7 @@
 void dibuixaIntro1(){
   dibujarLogo();
   dibuixaCercleIntro();
-  dibujarMenu();
+  
    enableButtons();
 }
 

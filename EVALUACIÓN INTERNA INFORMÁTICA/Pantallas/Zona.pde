@@ -3,7 +3,7 @@ void dibujarLogo() {
   fill(0);
   rect(marginH, marginV, logoWidth, logoHeight);
   fill(255);
-  text("LOGOTIPO", marginH + logoWidth/2, marginV + logoHeight/2);
+  
   popStyle();
    image(imgLogo, 0, 0, logoWidth+ marginH,2*marginV+ logoHeight);
 }
