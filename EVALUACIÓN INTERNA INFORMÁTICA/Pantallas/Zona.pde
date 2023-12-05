@@ -79,6 +79,7 @@ void dibuixaCercleIntro() {
 
   text("Perfil", 20.5*marginH+logoWidth, 1.5*marginV+logoWidth/2, CirculoPerfil/2, CirculoPerfil/2 );
   popStyle();
+ 
 }
 
 

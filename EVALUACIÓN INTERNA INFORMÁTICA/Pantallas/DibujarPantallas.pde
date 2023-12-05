@@ -4,7 +4,8 @@ void dibuixaIntro1(){
   dibujarLogo();
   dibuixaCercleIntro();
   
-   enableButtons();
+   enableButtonsAcceso();
+    bIngresar.display();
 }
 
 void dibuixaRepertori1(){
@@ -14,7 +15,7 @@ void dibuixaRepertori1(){
   dibujarTitulo();
   dibuixaColumna1();
   dibuixaColumna2();
-  enableButtons();
+  enableButtonsMenu();
 
 
 }
@@ -26,7 +27,7 @@ void dibuixaRepertori2(){
   
    Tablero();
   dibuixaColumna3();
-  enableButtons();
+  enableButtonsMenu();
 }
 
 void dibuixaCalendario(){
@@ -34,19 +35,19 @@ void dibuixaCalendario(){
   dibujarMenu();
   dibujarTitulo();
   DibujaCalendario();
-  enableButtons();
+  enableButtonsMenu();
 }
 
 void dibuixaPantalla04(){
   dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
-  enableButtons();
+  enableButtonsMenu();
 }
 
 void dibuixaPantalla05(){
   dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
-  enableButtons();
+  enableButtonsMenu();
 }

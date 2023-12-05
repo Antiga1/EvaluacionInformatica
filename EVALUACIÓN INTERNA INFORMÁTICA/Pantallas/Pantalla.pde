@@ -15,8 +15,8 @@ void setup() {
   fullScreen();            // Pantalla completa
   noStroke();              // Sense bordes
 
-  userText = new TextField(600, 500, 300, 50);
-  passText = new TextField(600, 400, 300, 50);
+  userText =  new TextField(600, 400, 300, 50);
+  passText = new TextField(600, 500, 300, 50);
   loadMedia();
   loadFonts();// Càrrega dels elements multimèdia
   setGUI();      // Estableix els paràmetres de la GUI
@@ -25,22 +25,22 @@ void setup() {
 void draw() {
 
   background(50);    // Color del fondo
-  // Dibuixa les etiquetes de text
-  fill(0);
-  textSize(48);
-  textAlign(LEFT);
-  textSize(24);
-  text("Username: ", 500, 130);
-  text("Password: ", 500, 180);
 
-  // Dibuixa els camps de text
-  userText.display();
-  passText.display();
 
 
   switch(pantalla) {
   case INTRO:
     dibuixaIntro1();
+    // Dibuixa les etiquetes de text
+    fill(0);
+    textSize(48);
+    textAlign(LEFT);
+    textSize(24);
+    text("Username: ", 490, 425);
+    text("Password: ", 490, 525);
+    // Dibuixa els camps de text
+    userText.display();
+    passText.display();
     break;
   case REPERTORIO1:
     dibuixaRepertori1();
@@ -68,42 +68,100 @@ void mousePressed() {
   if (pantalla == PANTALLA.INTRO) {
     userText.isPressed();
     passText.isPressed();
-    if (comprovaLogin() == true) {
-    }
 
-    //PANTALLA DEL REPERTORI
-    if (pantalla == PANTALLA.REPERTORIO1) {
-      if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+    if (bIngresar.mouseOverButton() && bIngresar.enabled) {
+      println("BOTO");
+      println(userText.text, passText.text);
+      if (comprovaLogin() == true) {
         pantalla = PANTALLA.REPERTORIO1;
-      } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
-        println("Pantalla Punts");
-        pantalla = PANTALLA.CALENDARIO;
-      } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
-        pantalla = PANTALLA.REGISTROHORAS;
-      } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
-        pantalla = PANTALLA.MISCLASES;
-      } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
-        pantalla = PANTALLA.PREPARACION;
-      }
-    }
-    //PANTALLA CALENDARIO
-
-    if ( pantalla == PANTALLA.CALENDARIO) {
-      if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
-        pantalla = PANTALLA.REPERTORIO1;
-      } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
-        println("Pantalla Punts");
-        pantalla = PANTALLA.CALENDARIO;
-      } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
-        pantalla = PANTALLA.REGISTROHORAS;
-      } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
-        pantalla = PANTALLA.MISCLASES;
-      } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
-        pantalla = PANTALLA.PREPARACION;
       }
     }
   }
+
+
+
+  //PANTALLA DEL REPERTORI
+  if (pantalla == PANTALLA.REPERTORIO1) {
+    if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
+      println("Pantalla Punts");
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
+      pantalla = PANTALLA.REGISTROHORAS;
+    } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
+      pantalla = PANTALLA.PREPARACION;
+    }
+  }
+  //PANTALLA CALENDARIO
+
+  if ( pantalla == PANTALLA.CALENDARIO) {
+    if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
+      println("Pantalla Punts");
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
+      pantalla = PANTALLA.REGISTROHORAS;
+    } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
+      pantalla = PANTALLA.PREPARACION;
+    }
+  }
+  //PANTALLA REGISTRO HORAS
+  if ( pantalla == PANTALLA.REGISTROHORAS) {
+    if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
+      println("Pantalla Punts");
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
+      pantalla = PANTALLA.REGISTROHORAS;
+    } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
+      pantalla = PANTALLA.PREPARACION;
+    }
+  }
+  
+  //PANTALLA MIS CLASES
+  
+  if ( pantalla == PANTALLA.MISCLASES) {
+    if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
+      println("Pantalla Punts");
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
+      pantalla = PANTALLA.REGISTROHORAS;
+    } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
+      pantalla = PANTALLA.PREPARACION;
+    }
+  }
+  
+  //PANTALLA PREPARACIÓN
+  if ( pantalla == PANTALLA.PREPARACION) {
+    if (bRepertori1.mouseOverButton() && bRepertori1.enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (bCalendario.mouseOverButton() && bCalendario.enabled) {
+      println("Pantalla Punts");
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (bRegistroHoras.mouseOverButton() && bRegistroHoras.enabled) {
+      pantalla = PANTALLA.REGISTROHORAS;
+    } else if (bMisClases.mouseOverButton() && bMisClases.enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } else if (bPreparación.mouseOverButton() && bPreparación.enabled) {
+      pantalla = PANTALLA.PREPARACION;
+    }
+  }
 }
+  
+
 
 
   // Modifica el cursor
@@ -123,14 +181,12 @@ void mousePressed() {
 
   // Comprova si el login és correcte
   boolean comprovaLogin() {
-    if ( userText.text.equals("MARTA") &&
-      passText.text.equals("1234")) {
+    if ( userText.text.equals("MARTA") && passText.text.equals("1234")) {
       return true;
     } else {
       return false;
     }
   }
-
   // Quan pitjam tecla
   void keyPressed() {
     userText.keyPressed(key, (int)keyCode);
