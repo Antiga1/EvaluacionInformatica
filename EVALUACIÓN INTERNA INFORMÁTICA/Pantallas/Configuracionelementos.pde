@@ -1,4 +1,4 @@
-Button bRepertori1, bCalendario, bRegistroHoras, bMisClases, bPreparación,bIngresar;
+Button bRepertori1, bCalendario, bRegistroHoras, bMisClases, bPreparación,bIngresar,bBlancas,bNegras;
 
 // Dimensions dels botons
 int buttonH = 100, buttonW = 300;
@@ -17,6 +17,8 @@ void initButtons() {
   bMisClases    = new Button("Mis Clases", 0, 200 + 3*buttonH + 6*marginV, buttonW, buttonH);
   bPreparación     = new Button("Preparación", 0, 200 + 4*buttonH + 8*marginV, buttonW, buttonH);
   bIngresar = new Button ("Acceder",600,150+ 3*buttonH + 8*marginV, 200,100);
+  bBlancas = new Button ("Blancas",600,150+ 3*buttonH + 8*marginV, 200,100);
+  bNegras = new Button ("Negras",800,150+ 3*buttonH + 8*marginV, 200,100);
 
 }
 
@@ -33,4 +35,10 @@ void enableButtonsMenu() {
 
 void enableButtonsAcceso(){
    bIngresar.setEnabled(true);
+}
+
+
+void enableButtonsRepertorio(){
+   bBlancas.setEnabled(true);
+  bNegras.setEnabled(true);
 }

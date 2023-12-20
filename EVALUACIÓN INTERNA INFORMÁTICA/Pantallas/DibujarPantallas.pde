@@ -16,6 +16,8 @@ void dibuixaRepertori1(){
   dibuixaColumna1();
   dibuixaColumna2();
   enableButtonsMenu();
+  enableButtonsRepertorio();
+
 
 
 }

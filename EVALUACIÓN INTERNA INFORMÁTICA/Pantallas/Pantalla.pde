@@ -42,21 +42,27 @@ void draw() {
     userText.display();
     passText.display();
     break;
+    
   case REPERTORIO1:
     dibuixaRepertori1();
     break;
+    
   case CALENDARIO:
     dibuixaCalendario();
     break;
+    
   case MISCLASES:
     dibuixaPantalla04();
     break;
+    
   case PREPARACION:
     dibuixaPantalla04();
     break;
+    
   case REGISTROHORAS:
     dibuixaPantalla04();
     break;
+    
   }
   updateCursor();   // Modifica l'aparença del cursor
 }
@@ -70,8 +76,7 @@ void mousePressed() {
     passText.isPressed();
 
     if (bIngresar.mouseOverButton() && bIngresar.enabled) {
-      println("BOTO");
-      println(userText.text, passText.text);
+    
       if (comprovaLogin() == true) {
         pantalla = PANTALLA.REPERTORIO1;
       }

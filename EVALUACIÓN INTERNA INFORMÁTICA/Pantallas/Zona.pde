@@ -39,6 +39,8 @@ void dibuixaColumna1() {
   fill(255);
   text("COLUMN 1", 2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   popStyle();
+    bBlancas.display();
+  
 }
 
 void dibuixaColumna2() {
@@ -48,6 +50,7 @@ void dibuixaColumna2() {
  fill(255);
 text("COLUMN 2",4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   popStyle();
+  bNegras.display();
 }
 
 void DibujaCalendario() {
