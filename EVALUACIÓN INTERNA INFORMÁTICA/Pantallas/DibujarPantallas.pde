@@ -14,9 +14,8 @@ void dibuixaRepertori1(){
   dibujarMenu();
   dibujarTitulo();
   dibuixaColumna1();
-  dibuixaColumna2();
   enableButtonsMenu();
-  enableButtonsRepertorio();
+  EnableBotonesRepertorio1();
 
 
 

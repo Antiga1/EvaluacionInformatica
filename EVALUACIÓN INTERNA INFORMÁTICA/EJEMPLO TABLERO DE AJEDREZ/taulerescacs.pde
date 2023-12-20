@@ -1,3 +1,4 @@
+
 // Figures vàlides
 enum Escac {REI_B, REINA_B, ALFIL_B, CAVALL_B, TORRE_B, PEO_B, 
             REI_N, REINA_N, ALFIL_N, CAVALL_N, TORRE_N, PEO_N, 

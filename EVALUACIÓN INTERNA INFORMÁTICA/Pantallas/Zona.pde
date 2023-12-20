@@ -15,11 +15,9 @@ void dibujarMenu() {
   fill(255);
   text("MENU", marginH + sidebarWidth/2, marginV + logoHeight + sidebarHeight/2);
   popStyle();
-  bRepertori1.display();
-  bCalendario.display();
-  bRegistroHoras.display();
-  bMisClases.display();
-  bPreparación.display();
+  for(Button b :BotonesMenu){
+    b.display();
+  }
 
 }
 
@@ -37,10 +35,11 @@ void dibuixaColumna1() {
   fill(0);
   rect(2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   fill(255);
-  text("COLUMN 1", 2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
-  popStyle();
-    bBlancas.display();
   
+  popStyle();
+    for(Button b :BotonesRepertorio1){
+    b.display();
+    }
 }
 
 void dibuixaColumna2() {
@@ -50,7 +49,7 @@ void dibuixaColumna2() {
  fill(255);
 text("COLUMN 2",4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   popStyle();
-  bNegras.display();
+  
 }
 
 void DibujaCalendario() {
