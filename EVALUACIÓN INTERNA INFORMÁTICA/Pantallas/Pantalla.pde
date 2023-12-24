@@ -1,8 +1,8 @@
 enum PANTALLA {
-  INTRO, REPERTORIO1, CALENDARIO, REGISTROHORAS, MISCLASES, PREPARACION
+  INTRO, REPERTORIO1, CALENDARIO, ALUMNOS, MISCLASES, PREPARACION
 };
 PANTALLA pantalla = PANTALLA.INTRO;
-
+Calendari c;
 // Exemple d'ús de camps de Text
 
 boolean logged = false;
@@ -52,15 +52,15 @@ void draw() {
     break;
     
   case MISCLASES:
-    dibuixaPantalla04();
+    dibuixaPantalla05();
     break;
     
   case PREPARACION:
-    dibuixaPantalla04();
+    dibuixaPantalla05();
     break;
     
-  case REGISTROHORAS:
-    dibuixaPantalla04();
+  case ALUMNOS:
+    dibujaPantallaAlumnos();
     break;
     
   }
@@ -70,6 +70,8 @@ void draw() {
 
 
 void mousePressed() {
+  //CALENDARI
+  c.checkButtons();
   //PANTALLA INICI
   if (pantalla == PANTALLA.INTRO) {
     userText.isPressed();
@@ -93,7 +95,7 @@ void mousePressed() {
       println("Pantalla Punts");
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.REGISTROHORAS;
+      pantalla = PANTALLA.ALUMNOS;
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
@@ -109,7 +111,7 @@ void mousePressed() {
       println("Pantalla Punts");
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.REGISTROHORAS;
+      pantalla = PANTALLA.ALUMNOS;
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
@@ -117,14 +119,14 @@ void mousePressed() {
     }
   }
   //PANTALLA REGISTRO HORAS
-  if ( pantalla == PANTALLA.REGISTROHORAS) {
+  if ( pantalla == PANTALLA.ALUMNOS) {
     if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
       pantalla = PANTALLA.REPERTORIO1;
     } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
       println("Pantalla Punts");
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.REGISTROHORAS;
+      pantalla = PANTALLA.ALUMNOS;
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
@@ -141,7 +143,7 @@ void mousePressed() {
       println("Pantalla Punts");
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.REGISTROHORAS;
+      pantalla = PANTALLA.ALUMNOS;
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
@@ -157,7 +159,7 @@ void mousePressed() {
       println("Pantalla Punts");
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.REGISTROHORAS;
+      pantalla = PANTALLA.ALUMNOS;
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
@@ -197,4 +199,15 @@ void mousePressed() {
     userText.keyPressed(key, (int)keyCode);
     passText.keyPressed(key, (int)keyCode);
     comprovaLogin();
+    
+     // Anar un mes enrere del calendari
+  if(keyCode==LEFT){
+    c.prevMonth();
+    println("PREV MONTH");
+  }
+  // Anar un mes endavant
+  else if(keyCode==RIGHT){
+    c.nextMonth();
+    println("PREV MONTH");
+  }
   }

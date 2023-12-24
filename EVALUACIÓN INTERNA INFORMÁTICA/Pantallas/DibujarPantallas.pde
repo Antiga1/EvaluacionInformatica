@@ -39,7 +39,7 @@ void dibuixaCalendario(){
   enableButtonsMenu();
 }
 
-void dibuixaPantalla04(){
+void dibujaPantallaAlumnos(){
   dibujarLogo();
   dibujarMenu();
   dibujarTitulo();

@@ -40,6 +40,7 @@ void dibuixaColumna1() {
     for(Button b :BotonesRepertorio1){
     b.display();
     }
+    bAñadir.display();
 }
 
 void dibuixaColumna2() {
@@ -58,6 +59,7 @@ void DibujaCalendario() {
   rect(3*marginH + sidebarWidth, 2*marginV + bannerHeight, 2*columnWidth + marginH, 1.08*columnHeight);
   fill(0);
   text("Calendario", 3*marginH + sidebarWidth + columnWidth, 2*marginV + bannerHeight + columnHeight/2);
+  c.display();
   popStyle();
 }
 
@@ -78,7 +80,8 @@ void dibuixaCercleIntro() {
   stroke(3);
   ellipse(23*marginH+logoWidth, 3*marginV+logoWidth/2, CirculoPerfil, CirculoPerfil);
   fill(0);
-
+  
+textAlign(CENTER);
   text("Perfil", 20.5*marginH+logoWidth, 1.5*marginV+logoWidth/2, CirculoPerfil/2, CirculoPerfil/2 );
   popStyle();
  
