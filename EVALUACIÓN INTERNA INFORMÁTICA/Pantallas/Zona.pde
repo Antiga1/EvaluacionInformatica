@@ -66,9 +66,10 @@ void DibujaCalendario() {
 void Tablero() {
   pushStyle();
   fill(255);
-  rect(4*marginH + sidebarWidth , 2*marginV + bannerHeight, Tablerox,Tableroy);
+  
   fill(255);
-  text("TABLERO", 4*marginH + sidebarWidth + 2*columnWidth +columnWidth/2, 2*marginV + bannerHeight + columnHeight/2);
+  t.display();
+  
   popStyle();
 }
 
