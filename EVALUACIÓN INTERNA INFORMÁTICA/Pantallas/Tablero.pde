@@ -33,8 +33,8 @@ class Tauler {
   }
 
   char getColumna(int c){
-     char simbol = 'H';
-     return (char)(simbol - c);
+     char simbol = 'A';
+     return (char)(simbol + c);
   }
   
   String getFilaColumna(int f, int c){
