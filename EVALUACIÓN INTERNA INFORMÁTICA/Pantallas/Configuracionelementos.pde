@@ -2,6 +2,8 @@ Button bIngresar;
 Button[] BotonesMenu;
 Button[] BotonesRepertorio1;
 Button bAñadir;
+
+String dataCalendari="";
 // Dimensions dels botons
 int buttonH = 100, buttonW = 300;
 
@@ -18,8 +20,9 @@ void initButtons() {
  
   bIngresar = new Button ("Acceder",600,150+ 3*buttonH + 8*marginV, 200,100);
   bAñadir = new Button ("+",13.5*marginH + 2*sidebarWidth+columnWidth, 1.5*marginV + bannerHeight, 50,50);
-  c = new Calendari(3*marginH + sidebarWidth, 5*marginV + bannerHeight, 2*columnWidth + marginH, 1.08*columnHeight);
+  c = new CalendariPlus(3*marginH + sidebarWidth, 5*marginV + bannerHeight, 2*columnWidth + marginH, 1.08*columnHeight);
   //tablero
+  
    
   t = new Tauler(340, 200, 680);
   t.setImatges();

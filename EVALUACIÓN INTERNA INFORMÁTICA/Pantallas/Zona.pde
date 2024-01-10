@@ -59,7 +59,17 @@ void DibujaCalendario() {
   rect(3*marginH + sidebarWidth, 2*marginV + bannerHeight, 2*columnWidth + marginH, 1.08*columnHeight);
   fill(0);
   text("Calendario", 3*marginH + sidebarWidth + columnWidth, 2*marginV + bannerHeight + columnHeight/2);
+  // Rectangle
+  
+  
+  // Text amb data seleccionada
+  fill(0); textAlign(LEFT); textSize(24);
+  text(dataCalendari, 190, 45);
+  
+  // Dibuixa el calendari
   c.display();
+  
+ 
   popStyle();
 }
 

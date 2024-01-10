@@ -6,6 +6,17 @@ void dibuixaIntro1(){
   
    enableButtonsAcceso();
     bIngresar.display();
+    
+    // Dibuixa les etiquetes de text
+    fill(0);
+    textSize(48);
+    textAlign(LEFT);
+    textSize(24);
+    text("Username: ", 490, 425);
+    text("Password: ", 490, 525);
+    // Dibuixa els camps de text
+    userText.display();
+    passText.display();
 }
 
 void dibuixaRepertori1(){
@@ -26,10 +37,10 @@ void dibuixaRepertori2(){
    dibujarLogo();
   dibujarMenu();
   dibujarTitulo();
-  
+  enableButtonsMenu();
    Tablero();
   dibuixaColumna3();
-  enableButtonsMenu();
+  
 }
 
 void dibuixaCalendario(){

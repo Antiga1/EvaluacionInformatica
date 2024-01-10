@@ -7,9 +7,9 @@ enum Escac {
     BUIDA
 };
 
-PANTALLA pantalla = PANTALLA.INTRO;
+PANTALLA pantalla = PANTALLA.ALUMNOS;
 Tauler t;
-Calendari c;
+CalendariPlus c;
 // Exemple d'ús de camps de Text
 
 boolean logged = false;
@@ -38,16 +38,7 @@ void draw() {
   switch(pantalla) {
   case INTRO:
     dibuixaIntro1();
-    // Dibuixa les etiquetes de text
-    fill(0);
-    textSize(48);
-    textAlign(LEFT);
-    textSize(24);
-    text("Username: ", 490, 425);
-    text("Password: ", 490, 525);
-    // Dibuixa els camps de text
-    userText.display();
-    passText.display();
+
     break;
 
   case REPERTORIO2:
@@ -80,10 +71,9 @@ void draw() {
 
 
 void mousePressed() {
-  //CALENDARI
-  c.checkButtons();
-  //TABLERO
-  t.casellaMouse();
+
+
+
   //PANTALLA INICI
   if (pantalla == PANTALLA.INTRO) {
     userText.isPressed();
@@ -119,10 +109,12 @@ void mousePressed() {
   //PANTALLA CALENDARIO
 
   if ( pantalla == PANTALLA.CALENDARIO) {
+
+
     if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
       pantalla = PANTALLA.REPERTORIO1;
     } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-      println("Pantalla Punts");
+
       pantalla = PANTALLA.CALENDARIO;
     } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
       pantalla = PANTALLA.ALUMNOS;
@@ -130,73 +122,91 @@ void mousePressed() {
       pantalla = PANTALLA.MISCLASES;
     } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
       pantalla = PANTALLA.PREPARACION;
-    }
-  }
-  //PANTALLA REGISTRO HORAS
-  if ( pantalla == PANTALLA.ALUMNOS) {
-    if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
-      pantalla = PANTALLA.REPERTORIO1;
-    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-      println("Pantalla Punts");
-      pantalla = PANTALLA.CALENDARIO;
-    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.ALUMNOS;
-    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
-      pantalla = PANTALLA.MISCLASES;
-    } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
-      pantalla = PANTALLA.PREPARACION;
+    } else if (c.bNext.mouseOverButton()) {
+      c.nextMonth();
+    } else if (c.bPrev.mouseOverButton()) {
+      c.prevMonth();
+    } else if (c.bOK.mouseOverButton() && c.dateSelected) {
+      dataCalendari = c.selectedDay +"/"+ c.selectedMonth + "/"+ c.selectedYear;
+      c.visible = false;
     }
   }
 
-  //PANTALLA MIS CLASES
 
-  if ( pantalla == PANTALLA.MISCLASES) {
-    if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
-      pantalla = PANTALLA.REPERTORIO1;
-    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-      println("Pantalla Punts");
-      pantalla = PANTALLA.CALENDARIO;
-    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.ALUMNOS;
-    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
-      pantalla = PANTALLA.MISCLASES;
-    } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
-      pantalla = PANTALLA.PREPARACION;
-    }
-  }
 
-  //PANTALLA PREPARACIÓN
-  if ( pantalla == PANTALLA.PREPARACION) {
-    if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
-      pantalla = PANTALLA.REPERTORIO1;
-    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-      println("Pantalla Punts");
-      pantalla = PANTALLA.CALENDARIO;
-    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.ALUMNOS;
-    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
-      pantalla = PANTALLA.MISCLASES;
-    } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
-      pantalla = PANTALLA.PREPARACION;
+
+    //PANTALLA MIS CLASES
+
+    if ( pantalla == PANTALLA.MISCLASES) {
+      if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
+        pantalla = PANTALLA.REPERTORIO1;
+      } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
+
+        pantalla = PANTALLA.CALENDARIO;
+      } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
+        pantalla = PANTALLA.ALUMNOS;
+      } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
+        pantalla = PANTALLA.MISCLASES;
+      } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
+        pantalla = PANTALLA.PREPARACION;
+      }
     }
-  }
-  //PANTALLA REPERTORIO2
-  if (pantalla == PANTALLA.REPERTORIO2) {
-    if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
-      pantalla = PANTALLA.REPERTORIO1;
-    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-      println("Pantalla Punts");
-      pantalla = PANTALLA.CALENDARIO;
-    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.ALUMNOS;
-    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
-      pantalla = PANTALLA.MISCLASES;
-    } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
-      pantalla = PANTALLA.PREPARACION;
-    } else if (BotonesRepertorio1[1].mouseOverButton() && BotonesRepertorio1[1].enabled) {
-      pantalla = PANTALLA.REPERTORIO2;
+
+    //PANTALLA PREPARACIÓN
+    if ( pantalla == PANTALLA.PREPARACION) {
+      if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
+        pantalla = PANTALLA.REPERTORIO1;
+      } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
+
+        pantalla = PANTALLA.CALENDARIO;
+      } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
+        pantalla = PANTALLA.ALUMNOS;
+      } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
+        pantalla = PANTALLA.MISCLASES;
+      } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
+        pantalla = PANTALLA.PREPARACION;
+      }
     }
-  }
+    //PANTALLA REPERTORIO2
+    if (pantalla == PANTALLA.REPERTORIO2) {
+      t.casellaMouse();
+
+      if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
+        pantalla = PANTALLA.REPERTORIO1;
+      } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
+
+        pantalla = PANTALLA.CALENDARIO;
+      } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
+        pantalla = PANTALLA.ALUMNOS;
+      } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
+        pantalla = PANTALLA.MISCLASES;
+      } else if (BotonesMenu[4].mouseOverButton() && BotonesMenu[4].enabled) {
+        pantalla = PANTALLA.PREPARACION;
+      } else if (BotonesRepertorio1[1].mouseOverButton() && BotonesRepertorio1[1].enabled) {
+        pantalla = PANTALLA.REPERTORIO2;
+      }
+    }
+
+    //PANTALLA ALUMNES
+    if (pantalla == PANTALLA.ALUMNOS) {
+
+      println("CLICANT");
+
+      if (BotonesMenu[0].mouseOverButton() ) {
+        pantalla = PANTALLA.REPERTORIO1;
+      } else if (BotonesMenu[1].mouseOverButton()) {
+        pantalla = PANTALLA.CALENDARIO;
+      } else if (BotonesMenu[2].mouseOverButton() ) {
+        pantalla = PANTALLA.ALUMNOS;
+      } else if (BotonesMenu[3].mouseOverButton() ) {
+        pantalla = PANTALLA.MISCLASES;
+      } else if (BotonesMenu[4].mouseOverButton() ) {
+        pantalla = PANTALLA.PREPARACION;
+      } else if (BotonesRepertorio1[1].mouseOverButton()) {
+        pantalla = PANTALLA.REPERTORIO2;
+      }
+    }
+  
 }
 
 
@@ -241,10 +251,9 @@ void keyPressed() {
     c.nextMonth();
     println("PREV MONTH");
   }
-  
-  if(key=='m' || key=='M'){
+
+  if (key=='m' || key=='M') {
     // Aplica la jugada seleccionada
     t.mouJugada();
   }
-
 }
