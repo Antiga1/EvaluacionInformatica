@@ -3,9 +3,9 @@ void dibujarLogo() {
   fill(0);
   rect(marginH, marginV, logoWidth, logoHeight);
   fill(255);
-  
+
   popStyle();
-   image(imgLogo, 0, 0, logoWidth+ marginH,2*marginV+ logoHeight);
+  image(imgLogo, 0, 0, logoWidth+ marginH, 2*marginV+ logoHeight);
 }
 
 void dibujarMenu() {
@@ -15,10 +15,9 @@ void dibujarMenu() {
   fill(255);
   text("MENU", marginH + sidebarWidth/2, marginV + logoHeight + sidebarHeight/2);
   popStyle();
-  for(Button b :BotonesMenu){
+  for (Button b : BotonesMenu) {
     b.display();
   }
-
 }
 
 void dibujarTitulo() {
@@ -35,22 +34,21 @@ void dibuixaColumna1() {
   fill(0);
   rect(2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   fill(255);
-  
+
   popStyle();
-    for(Button b :BotonesRepertorio1){
+  for (Button b : BotonesRepertorio1) {
     b.display();
-    }
-    bAñadir.display();
+  }
+  bAñadir.display();
 }
 
 void dibuixaColumna2() {
   pushStyle();
   fill(0);
   rect(4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
- fill(255);
-text("COLUMN 2",4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
+  fill(255);
+  text("COLUMN 2", 4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
   popStyle();
-  
 }
 
 void DibujaCalendario() {
@@ -60,26 +58,28 @@ void DibujaCalendario() {
   fill(0);
   text("Calendario", 3*marginH + sidebarWidth + columnWidth, 2*marginV + bannerHeight + columnHeight/2);
   // Rectangle
-  
-  
+
+
   // Text amb data seleccionada
-  fill(0); textAlign(LEFT); textSize(24);
+  fill(0);
+  textAlign(LEFT);
+  textSize(24);
   text(dataCalendari, 190, 45);
-  
+
   // Dibuixa el calendari
   c.display();
-  
- 
+
+
   popStyle();
 }
 
 void Tablero() {
   pushStyle();
   fill(255);
-  
+
   fill(255);
-  t.display();
-  
+  Tauler.display();
+
   popStyle();
 }
 
@@ -91,19 +91,18 @@ void dibuixaCercleIntro() {
   stroke(3);
   ellipse(23*marginH+logoWidth, 3*marginV+logoWidth/2, CirculoPerfil, CirculoPerfil);
   fill(0);
-  
-textAlign(CENTER);
+
+  textAlign(CENTER);
   text("Perfil", 20.5*marginH+logoWidth, 1.5*marginV+logoWidth/2, CirculoPerfil/2, CirculoPerfil/2 );
   popStyle();
- 
 }
 
 
-void dibuixaColumna3(){
-   pushStyle();
+void dibuixaColumna3() {
+  pushStyle();
   fill(0);
-  rect(15*marginH + sidebarWidth+columnWidth, 2*marginV + bannerHeight, Tablax,Tablay);
- fill(255);
-text("Anotacion",15*marginH + sidebarWidth+columnWidth, 3*marginV + bannerHeight, Tablax,Tablay);
+  rect(15*marginH + sidebarWidth+columnWidth, 2*marginV + bannerHeight, Tablax, Tablay);
+  fill(255);
+  text("Anotacion", 15*marginH + sidebarWidth+columnWidth, 3*marginV + bannerHeight, Tablax, Tablay);
   popStyle();
 }

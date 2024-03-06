@@ -23,14 +23,14 @@ class CalendariPlus {
   Button bNext, bPrev, bOK;
 
   // Dimensions del calendari
-  float x, y, w, h;
+  int x, y, w, h;
 
   // Visibilitat del calendari
   boolean visible = false;
 
 
   // Constructor
-  CalendariPlus(float x, float y, float w, float h) {
+  CalendariPlus(int x, int y, int w, int h) {
    
 
     this.buttons = new DayButton[37];
@@ -120,7 +120,7 @@ class CalendariPlus {
     createCalendar(x, y, w, h);
   }
 
-  void createCalendar(float x, float y, float w, float h) {
+  void createCalendar(int x, int y, int w, int h) {
 
     float dayWidth  = w / 7;
     float dayHeight = h / 6;
@@ -192,7 +192,7 @@ class CalendariPlus {
 
   // Dibuixa el Calendari
   void display() {
-   
+    if (visible) {
       pushStyle();
       
       fill(255); noStroke();
@@ -224,7 +224,7 @@ class CalendariPlus {
     }
     
     
-  
+  }
 
 
   // Comprova si pitjam sobre els botons del Calendari

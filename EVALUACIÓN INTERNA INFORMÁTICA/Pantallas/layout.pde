@@ -21,14 +21,14 @@ float columnWidth  = 520,
 //dimensiones circulos
 float CirculoPerfil=190,
   mini= 50;
-  
-  
-  //dimensiones tablero
-  
-  float Tablerox = 692, Tableroy=692;
-  
-  
-  
-  //dimensiones tabla con anotacion 
-  
-  float Tablax=300,Tablay=692;
+
+
+//dimensiones tablero
+
+float Tablerox = 692, Tableroy=692;
+
+
+
+//dimensiones tabla con anotacion
+
+float Tablax=300, Tablay=692;
