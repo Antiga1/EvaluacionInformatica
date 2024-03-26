@@ -100,6 +100,7 @@ class Tauler {
   }
 
   void display() {
+
     pushStyle();
     for (int f=0; f<8; f++) {
       for (int c=0; c<8; c++) {
@@ -173,11 +174,36 @@ class Tauler {
 
   void mouJugada() {
     if (sel1 && sel2) {
-
-      String fcDesti = getFilaColumna(sel2Fila, sel2Col);
-      println( fcDesti );
+      
+      Escac escac1 = caselles[sel1Fila][sel1Col].figura;
+      Escac escac2 = caselles[sel2Fila][sel2Col].figura;
+      String prefixe="";
+      if(escac2 == Escac.REI_B || escac2 == Escac.REI_N){
+        prefixe="R";
+      }
+      
+      String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
+      println(fcDesti);
       moviment(sel1Fila, sel1Col, sel2Fila, sel2Col);
+      
     }
+  }
+
+  String getJugada() {
+  
+     Escac escac2 = caselles[sel2Fila][sel2Col].figura;
+     println(escac2);
+      String prefixe="";
+      if(escac2 == Escac.REI_B || escac2 == Escac.REI_N){
+        prefixe="R";
+      }
+      
+      String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
+    return fcDesti;
+  
+  
+    
+    
   }
 
   void moviment(int fo, int co, int fd, int cd) {

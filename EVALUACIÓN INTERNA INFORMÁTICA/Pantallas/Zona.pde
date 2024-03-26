@@ -31,9 +31,7 @@ void dibujarTitulo() {
 
 void dibuixaColumna1() {
   pushStyle();
-  fill(0);
-  rect(2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, columnHeight);
-  fill(255);
+
 
   popStyle();
   for (Button b : BotonesRepertorio1) {
@@ -101,7 +99,7 @@ void dibuixaCercleIntro() {
 void dibuixaColumna3() {
   pushStyle();
   fill(0);
-  rect(15*marginH + sidebarWidth+columnWidth, 2*marginV + bannerHeight, Tablax, Tablay);
+  lv.display();
   fill(255);
   text("Anotacion", 15*marginH + sidebarWidth+columnWidth, 3*marginV + bannerHeight, Tablax, Tablay);
   popStyle();
