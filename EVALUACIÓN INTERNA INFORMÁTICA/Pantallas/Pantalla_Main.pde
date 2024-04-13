@@ -1,7 +1,7 @@
 
 
 enum PANTALLA {
-  INTRO, REPERTORIO1, CALENDARIO, ALUMNOS, MISCLASES, REPERTORIO2, REGISTRARSE,FECHA,APERTURA
+  INTRO, REPERTORIO1, CALENDARIO, ALUMNOS, MISCLASES, REPERTORIO2, REGISTRARSE, FECHA, APERTURA, UPDATECONTRASEÑA,CLASE,AÑADIRALUMNO
 };
 enum Escac {
   REI_B, REINA_B, ALFIL_B, CAVALL_B, TORRE_B, PEO_B,
@@ -9,12 +9,16 @@ enum Escac {
     BUIDA
 };
 
-PANTALLA pantalla = PANTALLA.REPERTORIO1;
+PANTALLA pantalla = PANTALLA.INTRO;
 
 
 
 // Declaració de les variables
-TextField userText, passText, newuser, newpass,anotacion,newdia,newhora,newalumno,newprecio,newduracion;
+TextField userText, passText, newuser, newpass, 
+anotacion, newdia, newhora, newalumno, newprecio, 
+newduracion, newidapertura, newnombreapertura, alumnoapertura,newsesion,
+idclase,nombreclase,profesorclase,
+idalumno1,nombrealumno1,apellidosalumno1,edadalumno1,eloalumno1,observacionesalumno1;
 
 
 void setup() {
@@ -22,13 +26,14 @@ void setup() {
   noStroke();              // Sense bordes
 
   connexioBBDD();
-  
+
   loadMedia();
   loadFonts();// Càrrega dels elements multimèdia
   setGUI();      // Estableix els paràmetres de la GUI
-  
+
   int n = getNumRowsTaula("ALUMNO");
   println("NUM ALUMNOS:" +n);
+ 
 }
 
 
@@ -69,13 +74,25 @@ void draw() {
     dibuixaPantallaRegisrarse();
 
     break;
-    
-    case FECHA:
+
+  case FECHA:
     dibuixaPantallaAñadirFecha();
     break;
-    
-    case APERTURA:
+
+  case APERTURA:
     dibuixaPantallaAñadirApertura();
+    break;
+
+  case UPDATECONTRASEÑA:
+    dibuixaPantallaUpdateContraseña();
+    break;
+    
+    case CLASE:
+    dibuixaPantallaAñadirClase();
+    break;
+    
+    case AÑADIRALUMNO: 
+    dibuixaPantallaAñadirAlumno();
     break;
   }
   updateCursor();   // Modifica l'aparença del cursor
@@ -106,11 +123,29 @@ void keyPressed() {
   passText.keyPressed(key, (int)keyCode);
   newuser.keyPressed(key, (int)keyCode);
   newpass.keyPressed(key, (int)keyCode);
+newsesion.keyPressed(key, (int)keyCode);
   newalumno.keyPressed(key, (int)keyCode);
   newhora.keyPressed(key, (int)keyCode);
   newprecio.keyPressed(key, (int)keyCode);
   newduracion.keyPressed(key, (int)keyCode);
-  
+
+  newidapertura.keyPressed(key, (int)keyCode);
+  newnombreapertura.keyPressed(key, (int)keyCode);
+  alumnoapertura.keyPressed(key, (int)keyCode);
+
+idclase.keyPressed(key, (int)keyCode);
+nombreclase.keyPressed(key, (int)keyCode);
+profesorclase.keyPressed(key, (int)keyCode);
+
+idalumno1.keyPressed(key, (int)keyCode);
+nombrealumno1.keyPressed(key, (int)keyCode);
+apellidosalumno1.keyPressed(key, (int)keyCode);
+edadalumno1.keyPressed(key, (int)keyCode);
+eloalumno1.keyPressed(key, (int)keyCode);
+observacionesalumno1.keyPressed(key, (int)keyCode);
+
+
+
   if ( pantalla == PANTALLA.CALENDARIO) {
     // Anar un mes enrere del calendari
     if (keyCode==LEFT) {
@@ -128,7 +163,8 @@ void keyPressed() {
       // Aplica la jugada seleccionada
       String textJugada = Tauler.getJugada();
       int num = lv.items.size() + 1;
-      lv.addItemToList(num + " " + textJugada);
+       lv.addItemToList(num+" ."+textJugada);
+      
       Tauler.mouJugada();
     }
   } else  if ( pantalla == PANTALLA.ALUMNOS) {
@@ -137,6 +173,8 @@ void keyPressed() {
     } else if (keyCode==RIGHT) {
       Tabla.nextPage();
     }
-  }
-   
+  }else  if 
+    (key=='ñ' || key=='ñ'){
+      pantalla = PANTALLA.INTRO;
+    }
 }

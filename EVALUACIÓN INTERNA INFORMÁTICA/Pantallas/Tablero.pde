@@ -178,12 +178,13 @@ class Tauler {
       Escac escac1 = caselles[sel1Fila][sel1Col].figura;
       Escac escac2 = caselles[sel2Fila][sel2Col].figura;
       String prefixe="";
-      if(escac2 == Escac.REI_B || escac2 == Escac.REI_N){
-        prefixe="R";
+        if ( escac2 == Escac.CAVALL_N || escac2 == Escac.CAVALL_B){
+        prefixe = "C";
+        
       }
       
       String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
-      println(fcDesti);
+      
       moviment(sel1Fila, sel1Col, sel2Fila, sel2Col);
       
     }
@@ -191,13 +192,20 @@ class Tauler {
 
   String getJugada() {
   
-     Escac escac2 = caselles[sel2Fila][sel2Col].figura;
-     println(escac2);
+     Escac escac1 = caselles[sel1Fila][sel1Col].figura;
+     
       String prefixe="";
-      if(escac2 == Escac.REI_B || escac2 == Escac.REI_N){
-        prefixe="R";
+       if ( escac1 == Escac.CAVALL_N || escac1 == Escac.CAVALL_B){
+        prefixe = "C";
+      } else if ( escac1 == Escac.TORRE_N || escac1 == Escac.TORRE_B){
+        prefixe = "T";
+      }else if ( escac1 == Escac.ALFIL_N || escac1 == Escac.ALFIL_B){
+        prefixe = "A";
+      }else if ( escac1 == Escac.REI_N || escac1 == Escac.REI_B){
+        prefixe = "D";
+      }else if ( escac1 == Escac.REINA_N || escac1 == Escac.REINA_B){
+        prefixe = "R";
       }
-      
       String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
     return fcDesti;
   

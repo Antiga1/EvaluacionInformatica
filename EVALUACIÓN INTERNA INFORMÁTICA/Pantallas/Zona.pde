@@ -11,7 +11,7 @@ void dibujarLogo() {
 void dibujarMenu() {
   pushStyle();
   fill(0);
-  rect(0, 2*marginV + logoHeight, sidebarWidth+marginH, sidebarHeight+17);
+  rect(0, 2*marginV + logoHeight, sidebarWidth+marginH, sidebarHeight+18);
   fill(255);
   text("MENU", marginH + sidebarWidth/2, marginV + logoHeight + sidebarHeight/2);
   popStyle();
@@ -21,12 +21,51 @@ void dibujarMenu() {
 }
 
 void dibujarTitulo() {
+ 
+  
+  if (pantalla == PANTALLA.REPERTORIO1){
+  pushStyle();
+  fill(0);
+  rect(2*marginH + logoWidth, marginV, bannerWidth/1.5, bannerHeight);
+  fill(255);
+  text("Repertorio", marginH + logoWidth + bannerWidth/3, marginV + bannerHeight/2);
+  popStyle();
+  
+  pushStyle();
+  fill(#B2D6FA);
+  rect(2*marginH + sidebarWidth, 80 + buttonH + 2* marginV, columnWidth, 100);
+  fill(0);
+  text("BLANCAS", 2*marginH + sidebarWidth*1.87, 120 + buttonH + 2* marginV);
+  popStyle();
+  
+  } else if (pantalla == PANTALLA.MISCLASES){
   pushStyle();
   fill(0);
   rect(2*marginH + logoWidth, marginV, bannerWidth, bannerHeight);
   fill(255);
-  text("Titulo", marginH + logoWidth + bannerWidth/2, marginV + bannerHeight/2);
+  text("Clases", marginH + logoWidth + bannerWidth/2, marginV + bannerHeight/2);
   popStyle();
+  
+  }else if (pantalla == PANTALLA.ALUMNOS){
+  
+  pushStyle();
+  fill(0);
+  rect(2*marginH + logoWidth, marginV, bannerWidth, bannerHeight);
+  fill(255);
+  text("ALUMNOS", marginH + logoWidth + bannerWidth/2, marginV + bannerHeight/2);
+  popStyle();
+  } else if (pantalla == PANTALLA.REPERTORIO2){
+  
+  pushStyle();
+  fill(0);
+  rect(2*marginH + logoWidth, marginV, bannerWidth, bannerHeight);
+  fill(255);
+  text("Repertorio2", marginH + logoWidth + bannerWidth/2, marginV + bannerHeight/2);
+  popStyle();
+  
+  }
+   
+  
 }
 
 void dibuixaColumna1() {
@@ -34,10 +73,8 @@ void dibuixaColumna1() {
 
 
   popStyle();
-  for (Button b : BotonesRepertorio1) {
-    b.display();
-  }
-  bAñadir.display();
+  
+ 
 }
 
 void dibuixaColumna2() {
@@ -101,6 +138,5 @@ void dibuixaColumna3() {
   fill(0);
   lv.display();
   fill(255);
-  text("Anotacion", 15*marginH + sidebarWidth+columnWidth, 3*marginV + bannerHeight, Tablax, Tablay);
   popStyle();
 }

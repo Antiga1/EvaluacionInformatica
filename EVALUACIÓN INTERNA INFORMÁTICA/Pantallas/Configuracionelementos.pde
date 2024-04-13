@@ -1,7 +1,7 @@
 Button bAcceder, bContraseña, bRegistrarse, bConfirmar;
 Button[] BotonesMenu;
-Button[] BotonesRepertorio1;
-Button bAñadir, b, b1, b2,b3;
+
+Button bAñadir, b, b1, b2,b3, bnextrepertorio,bprerepertorio;
 Button guardarAnotacion;
 
 
@@ -12,7 +12,14 @@ CalendariPlus c;
 Confirm confirma, confirma1;
 ListViewer lv;
 
+// Botons de la GUI
+ButtonList botons, botonsrepertorio ;
+Button bAdd,bAdd2, bRemove,bRemove2;
+boolean cursorHand = false;
 
+
+// Color de fons de l'App
+color bgColor = color(255);
 
 // Dimensions del Confirm
 float compW = 600;
@@ -49,9 +56,32 @@ void setGUI() {
   TablaC();
  TEXTO();
  moviments();
+ ListaBotones();
+ 
 }
 
+void ListaBotones(){
 
+ // Creació de la Llista de Botons
+  botons = new ButtonList(325, 200, 250, 150);
+  botonsrepertorio = new ButtonList( 2*marginH + sidebarWidth, 200 + buttonH + 2* marginV, columnWidth, 100);
+  
+  // Creació dels botons
+  botons.addButton("Escocesa");
+  botons.addButton("Siciliana");
+  botons.addButton("Italiana");
+  
+   botonsrepertorio.addButton("escocesa");
+  
+  bAdd = new Button("+2", 1270, 800, 70, 70);
+  bRemove = new Button("-2", 1350, 800, 70, 70);
+  bRemove2 = new Button("-3", 1350, 100, 70, 70);
+  bAdd2 = new Button("+3", 1270, 100, 70, 70);
+  
+  bnextrepertorio = new Button(">", 1160, 100, 70, 70);
+  bprerepertorio = new Button("<", 1080, 100, 70, 70);
+
+}
 void ButtonsAnotacion() {
   
   guardarAnotacion = new Button ("save", 1100, 850, 50, 50);
@@ -59,7 +89,9 @@ void ButtonsAnotacion() {
 
 void moviments(){
   lv = new ListViewer(1100, 210, 300, 640);
-  lv.setNumItems(10);
+  lv.setNumItems(12);
+  
+
 
 
 }
@@ -101,12 +133,31 @@ void TEXTO(){
   newuser = new TextField(600, 400, 400, 50);
   newpass= new TextField(600, 500, 400, 50);
   
+  newdia =new TextField(400, 350, 400, 50);
   
-  newalumno = new TextField(400, 150, 500, 50);
+  newsesion = new TextField(1000, 150, 400, 50);
+  newalumno = new TextField(400, 150, 400, 50);
   newhora = new TextField(400, 250, 400, 50);
   
   newprecio = new TextField(400, 550, 400, 50);
   newduracion = new TextField(400, 450, 400, 50);
+  
+  newidapertura = new TextField(500, 160, 500, 50);
+  newnombreapertura =new TextField(500, 260, 500, 50);
+  alumnoapertura= new TextField(500, 360, 500, 50);
+  
+  
+  idclase= new TextField(500, 160, 500, 50);
+  nombreclase= new TextField(500, 260, 500, 50);
+  profesorclase= new TextField(500, 360, 500, 50);
+  
+idalumno1= new TextField(500, 50, 500, 50);
+nombrealumno1= new TextField(500, 150, 500, 50);
+apellidosalumno1= new TextField(500, 250, 500, 50);
+edadalumno1= new TextField(500, 350, 500, 50);
+eloalumno1= new TextField(500, 450, 500, 50);
+observacionesalumno1= new TextField(500, 550, 500, 50);
+  
 }
 
 void TablaC() {
@@ -136,6 +187,7 @@ void TableroGUI() {
   Tauler = new Tauler(340, 200, 680);
   Tauler.setImatges();
   Tauler.colocaFigures();
+  
 }
 
 // Creació dels botons de la GUI
@@ -145,7 +197,7 @@ void initButtons() {
   bAcceder = new Button ("Acceder", 600, 150+ 3*buttonH + 8*marginV, 200, 100);
   bConfirmar = new Button ("Confirmar", 600, 150+ 3*buttonH + 8*marginV, 200, 100);
   
-  bAñadir = new Button ("+", 13.5*marginH + 2*sidebarWidth+columnWidth, 1.5*marginV + bannerHeight, 50, 50);
+  bAñadir = new Button ("+1", 13.5*marginH + 2*sidebarWidth+columnWidth, 1.5*marginV + bannerHeight, 50, 50);
   
   c = new CalendariPlus(350, 190, 1060, 691);
   b= new Button("Calendari", 300, 10, 150, 50);
@@ -161,12 +213,8 @@ void initButtons() {
   BotonesMenu[3] = new Button("Mis Clases", 0, 200 + 3*buttonH + 6*marginV, buttonW, buttonH);
 
 
-  //BOTONES REPERTORIO1
-  BotonesRepertorio1 = new Button[3];
-
-  BotonesRepertorio1[0] = new Button("Blancas", 2*marginH + sidebarWidth, 4.5*marginV + bannerHeight, columnWidth, 100);
-  BotonesRepertorio1[1] = new Button("Escocesa", 2*marginH + sidebarWidth, 200 + buttonH + 2* marginV, columnWidth, 100);
-  BotonesRepertorio1[2] = new Button("Negras", 4*marginH + sidebarWidth+columnWidth, 4.5*marginV + bannerHeight, columnWidth, 100);
+ 
+  
 }
 
 
@@ -197,8 +245,6 @@ void enableTabla() {
 
 //activar botones repertorio
 void EnableBotonesRepertorio1() {
-  BotonesRepertorio1[0].setEnabled(true);
-  BotonesRepertorio1[1].setEnabled(true);
-  BotonesRepertorio1[2].setEnabled(true);
+ 
   bAñadir.setEnabled(true);
 }

@@ -1,7 +1,7 @@
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
-// Objecte de connexió a la BBDD
+// conexión a la BBDD
 MySQL msql;
 
 // Paràmetres de la connexió
@@ -24,7 +24,41 @@ void connexioBBDD() {
     println("Error de Connexió :(");
   }
 }
+// inserts
+ 
+ 
+void insertInfoTablaUsuario(String nom, String password){
+  String q = "INSERT INTO `USUARIO` (`Usuario`, `Pass`) VALUES ('"+nom+"','"+password+"')";
+  println(q);
+  msql.query(q);
+}
 
+
+void insertInfoRepertorio(String id, String nombre, String idAl){
+String q = "INSERT INTO `APERTURA` (`idAPERTURA`, `nombre`, `idALUMNO`) VALUES ('"+id+"','"+nombre+"','"+idAl+"')";
+println(q);
+  msql.query(q);
+}
+
+void InsertInfoClase(String idc, String nombrec, String idAlc){
+String q = "INSERT INTO `CLASE` (`idCLASE`, `nombre`,  `idMAESTRO`) VALUES ('"+idc+"','"+nombrec+"','"+idAlc+"')";
+println(q);
+  msql.query(q);
+}
+
+void insertInfoCalendario(String ids, String dia, String hora, String Precio, String duracion, String idalumno){
+
+String q = "INSERT INTO `SESION` (`idSESION`, `dia`, `hora`, `precio`, `duracion`, `idALUMNO`) VALUES ('"+ids+"','"+dia+"','"+hora+""+Precio+"','"+duracion+"','"+idalumno+"')";
+println(q);
+  msql.query(q);
+}
+
+void InsertInfoAlumno(String idalumno, String nombrealumno, String apellidosalumno,String edadalumno,String eloalumno,String observaciones){
+String q = "INSERT INTO `ALUMNO` (`idALUMNO`, `nombre`, `apellidos`, `edat`, `elo`, `observaciones`) VALUES('"+idalumno+"','"+nombrealumno+"','"+apellidosalumno+"','"+edadalumno+"','"+eloalumno+"','"+observaciones+"')";
+println(q);
+  msql.query(q);
+}
+//selects
 // Obté el número de files de la taula
 int getNumRowsTaula(String nomTaula) {
   msql.query( "SELECT COUNT(*) AS n FROM %s", nomTaula );
@@ -85,9 +119,4 @@ boolean isValidUser(String userName, String password){
   println(msql.getInt("n"));
   return msql.getInt("n")==1;
 }
-
-void insertInfoTablaUsuario(String nom, String password){
-  String q = "INSERT INTO `USUARIO` (`Usuario`, `Pass`) VALUES ('"+nom+"','"+password+"')";
-  println(q);
-  msql.query(q);
-}
+ 
