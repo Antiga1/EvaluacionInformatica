@@ -90,23 +90,30 @@ class PagedTable {
 
 
     // Dibuixa textos
+
+
+
+
+
+
+
     fill(0);
     textSize(18);
     for (int r = 0; r < numRows; r++) {
       xCol = x;
       for (int c = 0; c< numCols; c++) {
         if (r==0) {
-          text(tableHeaders[c], xCol + 10, y + (r+1)*rowHeight - 10);
+          text(tableHeaders[c], xCol + 10, y + (r+0.5)*rowHeight + 10);
         } else {
-          int k = (numRows-1)*numPage + (r-1);
+           int k = (numRows-1)*numPage + (r-1);
           if (k<tableData.length) {
-           
-            text(tableData[k][c], xCol + 10, y + (r+1)*rowHeight - 10);
-          }
+            
+             text(tableData[k][c], xCol + 10, y + (r+0.15)*rowHeight - 10, w*(columnWidths[c]-1)/100.0, rowHeight);
+        }
         }
         xCol += w*columnWidths[c]/100.0;
       }
-    }
+  }
 
     // Informació de la Pàgina
     fill(0);
