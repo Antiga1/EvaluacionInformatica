@@ -35,8 +35,25 @@ void setup() {
   println("NUM ALUMNOS:" +n);
  
 }
+//conversion fecha
+String formataFechaEsp(String fechaEntrada){
+   
+  String y = fechaEntrada.split("-")[0];
+  String m = fechaEntrada.split("-")[1];
+  String d = fechaEntrada.split("-")[2];
+  
+  return d+"/"+m+"/"+y;
+}
 
-
+String formataFechaEng(String fechaEntrada){
+   
+  String y = fechaEntrada.split("/")[2];
+  String m = fechaEntrada.split("/")[1];
+  String d = fechaEntrada.split("/")[0];
+  
+  return y+"-"+m+"-"+d;
+}
+//conversion fecha
 void draw() {
 
   background(255);    // Color del fondo

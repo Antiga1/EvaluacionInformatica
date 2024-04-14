@@ -1,7 +1,7 @@
 class ListViewer {
-  
+
   ArrayList<ItemList> items;
-  Button next, previous;
+  Button next, previous, resetButton; // Agrega el botón de reset
   
   float x, y, w, h;
   
@@ -16,6 +16,9 @@ class ListViewer {
     next = new Button(">",13.5*marginH + 2*sidebarWidth+columnWidth, 850, 50, 50);
     next.enabled = false;
     previous = new Button("<", 1295, 850, 50, 50);
+    
+    // Inicializa el botón de reset
+    resetButton = new Button("Reset", 100, 850, 100, 50);
   }
   
   void setStartItem(int n){
@@ -28,6 +31,13 @@ class ListViewer {
   
   void addItemToList(String s){
     this.items.add(new ItemList(s));
+  }
+  
+  // Función para eliminar jugadas de la lista
+  void removeItem(int index) {
+    if (index >= 0 && index < items.size()) {
+      items.remove(index);
+    }
   }
   
   void display(){
@@ -43,6 +53,7 @@ class ListViewer {
     
     next.display();
     previous.display();
+    resetButton.display(); // Mostrar el botón de reset
     popStyle();
   }
   
@@ -65,7 +76,11 @@ class ListViewer {
     else {
       previous.enabled = true;
     }
+    
+    // Verifica si se presionó el botón de reset
+    if (resetButton.mouseOverButton()) {
+      // Elimina todas las jugadas
+      items.clear();
+    }
   }
-  
-  
 }

@@ -46,11 +46,12 @@ println(q);
   msql.query(q);
 }
 
-void insertInfoCalendario(String ids, String dia, String hora, String Precio, String duracion, String idalumno){
-
-String q = "INSERT INTO `SESION` (`idSESION`, `dia`, `hora`, `precio`, `duracion`, `idALUMNO`) VALUES ('"+ids+"','"+dia+"','"+hora+""+Precio+"','"+duracion+"','"+idalumno+"')";
-println(q);
-  msql.query(q);
+void insertInfoCalendario(String ids, String dia, String hora, String Precio, String duracion, String idalumno) {
+    String q = "INSERT INTO `SESION` (`idSESION`, `dia`, `hora`, `precio`, `duracion`, `idALUMNO`) VALUES ('" + ids + "','" + fechaEng + "','" + hora + "','" + Precio + "','" + duracion + "','" + idalumno + "')";
+    String fechaEng = formataFechaEng(fechaEsp);
+    println(q);
+   
+    msql.query(q);
 }
 
 void InsertInfoAlumno(String idalumno, String nombrealumno, String apellidosalumno,String edadalumno,String eloalumno,String observaciones){
@@ -71,7 +72,7 @@ String[][] getInfoTaulaALUMNO() {
 
   int numRows = getNumRowsTaula("ALUMNO");
 
-  String[][] data = new String[numRows][7];
+  String[][] data = new String[numRows][6];
 
   int nr=0;
   msql.query( "SELECT * FROM ALUMNO" );
@@ -82,7 +83,7 @@ String[][] getInfoTaulaALUMNO() {
     data[nr][3] = String.valueOf(msql.getInt("edat"));
     data[nr][4] = String.valueOf(msql.getInt("elo"));
     data[nr][5] = msql.getString("observaciones");
-    data[nr][6] = msql.getString("titulo");
+    
     nr++;
   }
   return data;

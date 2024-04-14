@@ -24,6 +24,9 @@ void mousePressed() {
     } else if (bContraseña.mouseOverButton()) {
       pantalla = PANTALLA.UPDATECONTRASEÑA;
     }
+    
+    //pantalla registrarse 
+    
   } else if (pantalla == PANTALLA.REGISTRARSE) {
     newuser.isPressed();
     newpass.isPressed();
@@ -39,6 +42,8 @@ void mousePressed() {
     } else if (bConfirmar.mouseOverButton() && bAñadir.enabled) {
       confirma1.setVisible(true);
     }
+    
+    //pantalla fecha
   } else if (pantalla == PANTALLA.FECHA) {
 
     Tauler.colocaFigures();
@@ -56,7 +61,7 @@ void mousePressed() {
       String Precio = newprecio.text;
       String duracion = newduracion.text;
       String idalumno = newalumno.text;
-      insertInfoCalendario(idsesion, dia, hora, Precio, duracion, idalumno);
+      insertInfoCalendario(idsesion, fechaEng, hora, Precio, duracion, idalumno);
 
       pantalla = PANTALLA.CALENDARIO;
     } else if (confirma1.bCancelar.mouseOverButton()) {
@@ -67,29 +72,7 @@ void mousePressed() {
   }
 
 
-  //PANTALLA DEL REPERTORI1
-  else if (pantalla == PANTALLA.REPERTORIO1) {
 
-    Tauler.colocaFigures();
-
-
-    // MENU
-    if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
-      pantalla = PANTALLA.REPERTORIO1;
-    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
-
-      pantalla = PANTALLA.CALENDARIO;
-    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
-      pantalla = PANTALLA.ALUMNOS;
-    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
-      pantalla = PANTALLA.MISCLASES;
-    } else if (bAdd2.mouseOverButton()) {
-
-      pantalla = PANTALLA.APERTURA;
-    } else if (bRemove2.mouseOverButton()) {
-      botonsrepertorio.deleteLastButton();
-    }
-  }
   //PANTALLA CALENDARIO
 
   else if ( pantalla == PANTALLA.CALENDARIO) {
@@ -142,7 +125,35 @@ void mousePressed() {
   }
 
 
+  //PANTALLA DEL REPERTORI1
+  else if (pantalla == PANTALLA.REPERTORIO1) {
 
+    Tauler.colocaFigures();
+      if (botons.checkButtons()!= -1) {
+       String id = newidapertura.text;
+      String nombre = newnombreapertura.text;
+      String idAl = alumnoapertura.text;
+      insertInfoRepertorio(id, nombre, idAl);
+      if (botons.checkButtonsText().equals(""+nombre+"")) {
+        pantalla = PANTALLA.REPERTORIO2;
+      }
+    }else if (bAdd2.mouseOverButton()) {
+      pantalla = PANTALLA.APERTURA;
+    } else if (bRemove2.mouseOverButton()) {
+      botonsrepertorio.deleteLastButton();
+    }
+    // MENU
+    else if (BotonesMenu[0].mouseOverButton() && BotonesMenu[0].enabled) {
+      pantalla = PANTALLA.REPERTORIO1;
+    } else if (BotonesMenu[1].mouseOverButton() && BotonesMenu[1].enabled) {
+
+      pantalla = PANTALLA.CALENDARIO;
+    } else if (BotonesMenu[2].mouseOverButton() && BotonesMenu[2].enabled) {
+      pantalla = PANTALLA.ALUMNOS;
+    } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
+      pantalla = PANTALLA.MISCLASES;
+    } 
+  }
 
   //PANTALLA MIS CLASES
 
@@ -150,11 +161,12 @@ void mousePressed() {
     Tauler.colocaFigures();
 
     if (botons.checkButtons()!= -1) {
-      if (botons.checkButtonsText().equals("Escocesa")) {
-        pantalla = PANTALLA.REPERTORIO2;
-      } else if (botons.checkButtonsText().equals("Siciliana")) {
-        pantalla = PANTALLA.REPERTORIO2;
-      } else if (botons.checkButtonsText().equals("Italiana")) {
+       String idc = idclase.text;
+      String nombrec = nombreclase.text;
+      String idAlc = profesorclase.text;
+      InsertInfoClase(idc, nombrec, idAlc);
+      if (botons.checkButtonsText().equals(""+nombrec+"")) {
+        
         pantalla = PANTALLA.REPERTORIO2;
       }
     } else if (bAdd.mouseOverButton()) {
@@ -172,6 +184,8 @@ void mousePressed() {
     } else if (BotonesMenu[3].mouseOverButton() && BotonesMenu[3].enabled) {
       pantalla = PANTALLA.MISCLASES;
     }
+    
+    //pantalla clase 
   } else if (pantalla == PANTALLA.CLASE) {
     idclase.isPressed();
     nombreclase.isPressed();
@@ -233,13 +247,13 @@ void mousePressed() {
     } else if (BotonesMenu[3].mouseOverButton() ) {
       pantalla = PANTALLA.MISCLASES;
     }
+    
+    //pantalla añadir apertura
   } else if ( pantalla == PANTALLA.APERTURA) {
     Tauler.colocaFigures();
     newidapertura.isPressed();
     newnombreapertura.isPressed();
     alumnoapertura.isPressed();
-
-
 
     if (confirma1.bAceptar.mouseOverButton()) {
       confirma1.setVisible(false);
@@ -255,6 +269,8 @@ void mousePressed() {
     } else if (bConfirmar.mouseOverButton() && bAñadir.enabled) {
       confirma1.setVisible(true);
     }
+    
+    
   } else if (pantalla == PANTALLA.UPDATECONTRASEÑA) {
     Tauler.colocaFigures();
     newpass.isPressed();

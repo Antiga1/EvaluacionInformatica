@@ -4,7 +4,8 @@ Button[] BotonesMenu;
 Button bAñadir, b, b1, b2,b3, bnextrepertorio,bprerepertorio;
 Button guardarAnotacion;
 
-
+String fechaEng = "2021-03-16";
+String fechaEsp = "16/03/2021";
 
 PagedTable Tabla, TablaC;
 Tauler Tauler;
@@ -57,9 +58,18 @@ void setGUI() {
  TEXTO();
  moviments();
  ListaBotones();
- 
+ conversionfecha();
 }
 
+void conversionfecha(){
+ String fecha1 = formataFechaEsp(fechaEng);
+  println("Format ESP: "+fecha1);
+  
+  // Formata fecha a format YYYY-MM-DD
+  String fecha2 = formataFechaEng(fechaEsp);
+  println("Format ENG: "+fecha2);
+
+}
 void ListaBotones(){
 
  // Creació de la Llista de Botons
@@ -67,9 +77,7 @@ void ListaBotones(){
   botonsrepertorio = new ButtonList( 2*marginH + sidebarWidth, 200 + buttonH + 2* marginV, columnWidth, 100);
   
   // Creació dels botons
-  botons.addButton("Escocesa");
-  botons.addButton("Siciliana");
-  botons.addButton("Italiana");
+  
   
    botonsrepertorio.addButton("escocesa");
   
