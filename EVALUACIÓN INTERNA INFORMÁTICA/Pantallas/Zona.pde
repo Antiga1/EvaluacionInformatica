@@ -38,6 +38,14 @@ void dibujarTitulo() {
   text("BLANCAS", 2*marginH + sidebarWidth*1.87, 120 + buttonH + 2* marginV);
   popStyle();
   
+ pushStyle();
+  fill(#B2D6FA);
+  rect(2.8*(2*marginH + sidebarWidth), 80 + buttonH + 2* marginV, columnWidth, 100);
+  fill(0);
+  text("NEGRAS", 2*(2*marginH + sidebarWidth*1.87), 120 + buttonH + 2* marginV);
+  popStyle();
+  
+  
   } else if (pantalla == PANTALLA.MISCLASES){
   pushStyle();
   fill(0);

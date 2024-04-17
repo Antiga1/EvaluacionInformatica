@@ -1,7 +1,7 @@
 
 
 enum PANTALLA {
-  INTRO, REPERTORIO1, CALENDARIO, ALUMNOS, MISCLASES, REPERTORIO2, REGISTRARSE, FECHA, APERTURA, UPDATECONTRASEÑA,CLASE,AÑADIRALUMNO
+  INTRO, REPERTORIO1, CALENDARIO, ALUMNOS, MISCLASES, REPERTORIO2, REGISTRARSE, FECHA, APERTURA, UPDATECONTRASEÑA, CLASE, AÑADIRALUMNO
 };
 enum Escac {
   REI_B, REINA_B, ALFIL_B, CAVALL_B, TORRE_B, PEO_B,
@@ -14,11 +14,11 @@ PANTALLA pantalla = PANTALLA.INTRO;
 
 
 // Declaració de les variables
-TextField userText, passText, newuser, newpass, 
-anotacion, newdia, newhora, newalumno, newprecio, 
-newduracion, newidapertura, newnombreapertura, alumnoapertura,newsesion,
-idclase,nombreclase,profesorclase,
-idalumno1,nombrealumno1,apellidosalumno1,edadalumno1,eloalumno1,observacionesalumno1;
+TextField userText, passText, newuser, newpass,
+  anotacion, newdia, newhora, newalumno, newprecio,
+  newduracion, newidapertura, newnombreapertura, alumnoapertura, newsesion,
+  idclase, nombreclase, profesorclase,
+  idalumno1, nombrealumno1, apellidosalumno1, edadalumno1, eloalumno1, observacionesalumno1;
 
 
 void setup() {
@@ -33,24 +33,23 @@ void setup() {
 
   int n = getNumRowsTaula("ALUMNO");
   println("NUM ALUMNOS:" +n);
- 
 }
 //conversion fecha
-String formataFechaEsp(String fechaEntrada){
-   
+String formataFechaEsp(String fechaEntrada) {
+
   String y = fechaEntrada.split("-")[0];
   String m = fechaEntrada.split("-")[1];
   String d = fechaEntrada.split("-")[2];
-  
+
   return d+"/"+m+"/"+y;
 }
 
-String formataFechaEng(String fechaEntrada){
-   
+String formataFechaEng(String fechaEntrada) {
+
   String y = fechaEntrada.split("/")[2];
   String m = fechaEntrada.split("/")[1];
   String d = fechaEntrada.split("/")[0];
-  
+
   return y+"-"+m+"-"+d;
 }
 //conversion fecha
@@ -103,12 +102,12 @@ void draw() {
   case UPDATECONTRASEÑA:
     dibuixaPantallaUpdateContraseña();
     break;
-    
-    case CLASE:
+
+  case CLASE:
     dibuixaPantallaAñadirClase();
     break;
-    
-    case AÑADIRALUMNO: 
+
+  case AÑADIRALUMNO:
     dibuixaPantallaAñadirAlumno();
     break;
   }
@@ -140,7 +139,7 @@ void keyPressed() {
   passText.keyPressed(key, (int)keyCode);
   newuser.keyPressed(key, (int)keyCode);
   newpass.keyPressed(key, (int)keyCode);
-newsesion.keyPressed(key, (int)keyCode);
+  newsesion.keyPressed(key, (int)keyCode);
   newalumno.keyPressed(key, (int)keyCode);
   newhora.keyPressed(key, (int)keyCode);
   newprecio.keyPressed(key, (int)keyCode);
@@ -150,16 +149,16 @@ newsesion.keyPressed(key, (int)keyCode);
   newnombreapertura.keyPressed(key, (int)keyCode);
   alumnoapertura.keyPressed(key, (int)keyCode);
 
-idclase.keyPressed(key, (int)keyCode);
-nombreclase.keyPressed(key, (int)keyCode);
-profesorclase.keyPressed(key, (int)keyCode);
+  idclase.keyPressed(key, (int)keyCode);
+  nombreclase.keyPressed(key, (int)keyCode);
+  profesorclase.keyPressed(key, (int)keyCode);
 
-idalumno1.keyPressed(key, (int)keyCode);
-nombrealumno1.keyPressed(key, (int)keyCode);
-apellidosalumno1.keyPressed(key, (int)keyCode);
-edadalumno1.keyPressed(key, (int)keyCode);
-eloalumno1.keyPressed(key, (int)keyCode);
-observacionesalumno1.keyPressed(key, (int)keyCode);
+  idalumno1.keyPressed(key, (int)keyCode);
+  nombrealumno1.keyPressed(key, (int)keyCode);
+  apellidosalumno1.keyPressed(key, (int)keyCode);
+  edadalumno1.keyPressed(key, (int)keyCode);
+  eloalumno1.keyPressed(key, (int)keyCode);
+  observacionesalumno1.keyPressed(key, (int)keyCode);
 
 
 
@@ -180,8 +179,9 @@ observacionesalumno1.keyPressed(key, (int)keyCode);
       // Aplica la jugada seleccionada
       String textJugada = Tauler.getJugada();
       int num = lv.items.size() + 1;
-       lv.addItemToList(num+" ."+textJugada);
-      
+      //lv.addItemToList(num+" ."+textJugada);
+      lv.addItemToList(textJugada);
+
       Tauler.mouJugada();
     }
   } else  if ( pantalla == PANTALLA.ALUMNOS) {
@@ -190,8 +190,8 @@ observacionesalumno1.keyPressed(key, (int)keyCode);
     } else if (keyCode==RIGHT) {
       Tabla.nextPage();
     }
-  }else  if 
-    (key=='ñ' || key=='ñ'){
-      pantalla = PANTALLA.INTRO;
-    }
+  } else  if
+    (key=='ñ' || key=='ñ') {
+    pantalla = PANTALLA.INTRO;
+  }
 }

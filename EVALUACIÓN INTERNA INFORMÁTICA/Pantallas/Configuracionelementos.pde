@@ -71,28 +71,28 @@ void conversionfecha(){
 
 }
 void ListaBotones(){
-
- // Creació de la Llista de Botons
-  botons = new ButtonList(325, 200, 250, 150);
-  botonsrepertorio = new ButtonList( 2*marginH + sidebarWidth, 200 + buttonH + 2* marginV, columnWidth, 100);
-  
-  // Creació dels botons
-  
-  
-   botonsrepertorio.addButton("escocesa");
-  
-  bAdd = new Button("+2", 1270, 800, 70, 70);
-  bRemove = new Button("-2", 1350, 800, 70, 70);
-  bRemove2 = new Button("-3", 1350, 100, 70, 70);
-  bAdd2 = new Button("+3", 1270, 100, 70, 70);
-  
-  bnextrepertorio = new Button(">", 1160, 100, 70, 70);
-  bprerepertorio = new Button("<", 1080, 100, 70, 70);
-
+    // Creación de la Lista de Botones
+    botons = new ButtonList(325, 200, 250, 150);
+    botonsrepertorio = new ButtonList(2*marginH + sidebarWidth, 200 + buttonH + 2* marginV, columnWidth, 100);
+    
+    // Creación de los botones
+    
+    String[][] infoTaulaCLASE = getInfoTaulaCLASE(); // Llamada a la función
+    for (String[] info : infoTaulaCLASE) {
+        botons.addButton(info[1]); 
+    }
+    
+    bAdd = new Button("+", 1270, 800, 70, 70);
+    bRemove = new Button("-", 1350, 800, 70, 70);
+    bRemove2 = new Button("-", 1350, 100, 70, 70);
+    bAdd2 = new Button("+", 1270, 100, 70, 70);
+    
+    bnextrepertorio = new Button(">", 1160, 100, 70, 70);
+    bprerepertorio = new Button("<", 1080, 100, 70, 70);
 }
 void ButtonsAnotacion() {
   
-  guardarAnotacion = new Button ("save", 1100, 850, 50, 50);
+  guardarAnotacion = new Button ("save", 1100, 850, 100, 50);
 }
 
 void moviments(){
@@ -181,6 +181,7 @@ void TablaC() {
   float[] colWidths = {10, 15, 30, 10, 10, 25};
   // Dades de la taula
   String[][]info = getInfoTaulaSESION();
+  
   TablaC = new PagedTable(files, columnes);
   TablaC.setHeaders(headers);
   TablaC.setData(info);
@@ -208,7 +209,7 @@ void initButtons() {
   bAñadir = new Button ("+1", 13.5*marginH + 2*sidebarWidth+columnWidth, 1.5*marginV + bannerHeight, 50, 50);
   
   c = new CalendariPlus(350, 190, 1060, 691);
-  b= new Button("Calendari", 300, 10, 150, 50);
+  b= new Button("Calendario", 300, 10, 150, 50);
 
 
   //BOTONES MENU

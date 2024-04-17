@@ -174,44 +174,38 @@ class Tauler {
 
   void mouJugada() {
     if (sel1 && sel2) {
-      
+
       Escac escac1 = caselles[sel1Fila][sel1Col].figura;
       Escac escac2 = caselles[sel2Fila][sel2Col].figura;
       String prefixe="";
-        if ( escac2 == Escac.CAVALL_N || escac2 == Escac.CAVALL_B){
+      if ( escac2 == Escac.CAVALL_N || escac2 == Escac.CAVALL_B) {
         prefixe = "C";
-        
       }
-      
+
       String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
-      
+
       moviment(sel1Fila, sel1Col, sel2Fila, sel2Col);
-      
     }
   }
 
   String getJugada() {
-  
-     Escac escac1 = caselles[sel1Fila][sel1Col].figura;
-     
-      String prefixe="";
-       if ( escac1 == Escac.CAVALL_N || escac1 == Escac.CAVALL_B){
-        prefixe = "C";
-      } else if ( escac1 == Escac.TORRE_N || escac1 == Escac.TORRE_B){
-        prefixe = "T";
-      }else if ( escac1 == Escac.ALFIL_N || escac1 == Escac.ALFIL_B){
-        prefixe = "A";
-      }else if ( escac1 == Escac.REI_N || escac1 == Escac.REI_B){
-        prefixe = "D";
-      }else if ( escac1 == Escac.REINA_N || escac1 == Escac.REINA_B){
-        prefixe = "R";
-      }
-      String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
+
+    Escac escac1 = caselles[sel1Fila][sel1Col].figura;
+
+    String prefixe="";
+    if ( escac1 == Escac.CAVALL_N || escac1 == Escac.CAVALL_B) {
+      prefixe = "C";
+    } else if ( escac1 == Escac.TORRE_N || escac1 == Escac.TORRE_B) {
+      prefixe = "T";
+    } else if ( escac1 == Escac.ALFIL_N || escac1 == Escac.ALFIL_B) {
+      prefixe = "A";
+    } else if ( escac1 == Escac.REI_N || escac1 == Escac.REI_B) {
+      prefixe = "D";
+    } else if ( escac1 == Escac.REINA_N || escac1 == Escac.REINA_B) {
+      prefixe = "R";
+    }
+    String fcDesti = prefixe + getFilaColumna(sel2Fila, sel2Col);
     return fcDesti;
-  
-  
-    
-    
   }
 
   void moviment(int fo, int co, int fd, int cd) {
@@ -220,5 +214,40 @@ class Tauler {
     this.caselles[fd][cd].selected = false;
     this.caselles[fo][co].selected = false;
     resetSeleccio();
+  }
+  void resetPiezas() {
+    // Limpiar todas las casillas del tablero
+    for (int f = 0; f < 8; f++) {
+      for (int c = 0; c < 8; c++) {
+        caselles[f][c].setFigura(Escac.BUIDA);
+      }
+    }
+
+    // Restablecer las piezas a su posición inicial
+    // Blanques
+    caselles[0][0].setFigura(Escac.TORRE_N);
+    caselles[0][7].setFigura(Escac.TORRE_N);
+    caselles[0][1].setFigura(Escac.CAVALL_N);
+    caselles[0][6].setFigura(Escac.CAVALL_N);
+    caselles[0][2].setFigura(Escac.ALFIL_N);
+    caselles[0][5].setFigura(Escac.ALFIL_N);
+    caselles[0][3].setFigura(Escac.REI_N);
+    caselles[0][4].setFigura(Escac.REINA_N);
+    for (int i = 0; i < 8; i++) {
+      caselles[1][i].setFigura(Escac.PEO_N);
+    }
+
+    // Negres
+    caselles[7][0].setFigura(Escac.TORRE_B);
+    caselles[7][7].setFigura(Escac.TORRE_B);
+    caselles[7][1].setFigura(Escac.CAVALL_B);
+    caselles[7][6].setFigura(Escac.CAVALL_B);
+    caselles[7][2].setFigura(Escac.ALFIL_B);
+    caselles[7][5].setFigura(Escac.ALFIL_B);
+    caselles[7][3].setFigura(Escac.REI_B);
+    caselles[7][4].setFigura(Escac.REINA_B);
+    for (int i = 0; i < 8; i++) {
+      caselles[6][i].setFigura(Escac.PEO_B);
+    }
   }
 }

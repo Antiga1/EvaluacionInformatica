@@ -81,6 +81,7 @@ class ListViewer {
     if (resetButton.mouseOverButton()) {
       // Elimina todas las jugadas
       items.clear();
+      Tauler.resetPiezas();
     }
   }
 }
